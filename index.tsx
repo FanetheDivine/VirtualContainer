@@ -9,6 +9,10 @@ type Props = {
    * 那么默认值改为与`flex-direction`的方向相同
    */
   direction?: 'column' | 'row';
+  /**容器是否展示 
+   * 默认值为true
+  */
+  visible?: boolean;
   children?: ReactNode;
 }
 /**
@@ -20,6 +24,9 @@ const VirtualContainer: FC<Props> = (props) => {
     width: 0,
     height: 0,
     overflow: 'visible',
+  }
+  if(!props.visible){
+    containerStyle.overflow = 'hidden'
   }
   if (props.direction === 'row') {
     containerStyle.width = 'auto';
