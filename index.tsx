@@ -5,13 +5,14 @@ type Props = {
   style?: CSSProperties;
   /**容器在这个方向上不会退化 而是允许子元素自然展开  
    * 这个值的默认值是`'row'`  
-   * 如果你在容器上应用了flex布局 那么默认值改为与`flex-direction`的方向相同
+   * 如果你在容器的内联样式上应用了flex布局  
+   * 那么默认值改为与`flex-direction`的方向相同
    */
   direction?: 'column' | 'row';
   children?: ReactNode;
 }
 /**
- * *不会*被实际渲染的虚拟容器
+ * *不会*被实际渲染的虚拟容器  
  * 它会退化为水平或竖直的线段 这会对定位产生一定影响
 */
 const VirtualContainer: FC<Props> = (props) => {
