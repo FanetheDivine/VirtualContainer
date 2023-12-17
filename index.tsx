@@ -1,17 +1,16 @@
-import { CSSProperties, ReactNode, FC } from "react";
+import { CSSProperties, ReactNode } from "react";
 type Props = {
   id?: string;
   className?: string;
   style?: CSSProperties;
-  /**容器在这个方向上不会退化 而是允许子元素自然展开  
+  /**
+   * 容器在这个方向上不会退化 而是允许子元素自然展开  
    * 这个值的默认值是`'row'`  
    * 如果你在容器的内联样式上应用了flex布局  
    * 那么默认值改为与`flex-direction`的方向相同
    */
   direction?: 'column' | 'row';
-  /**容器是否展示 
-   * 默认值为true
-  */
+  /**  容器内容是否可见 */
   visible?: boolean;
   children?: ReactNode;
 }
@@ -19,13 +18,13 @@ type Props = {
  * *不会*被实际渲染的虚拟容器  
  * 它会退化为水平或竖直的线段 这会对定位产生一定影响
 */
-const VirtualContainer: FC<Props> = (props) => {
+export default function VirtualContainer(props: Props) {
   const containerStyle: CSSProperties = {
     width: 0,
     height: 0,
     overflow: 'visible',
   }
-  if(!props.visible){
+  if (!props.visible) {
     containerStyle.overflow = 'hidden'
   }
   if (props.direction === 'row') {
@@ -47,5 +46,3 @@ const VirtualContainer: FC<Props> = (props) => {
     </div>
   );
 }
-
-export default VirtualContainer;
